@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="en">
-    <head> <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="css/leaflet.css">
@@ -13,21 +13,11 @@
         <link rel="stylesheet" href="css/MarkerCluster.css">
         <link rel="stylesheet" href="css/MarkerCluster.Default.css">
         <style>
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-}
-#map {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-</style>
+        #map {
+            width: 1020px;
+            height: 604px;
+        }
+        </style>
         <title>Solitary Nesting Olive Ridley Population Dynamics- Eastern Tropical Pacific</title>
     </head>
     <body>
@@ -53,7 +43,7 @@ html, body {
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[-7.326577419718598,-100.07600367694617],[7.394904416101397,-64.02595353970305]]);
+        }).fitBounds([[1.881323301148436,-97.36760630447607],[23.23677624581728,-60.13177863265919]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -116,19 +106,19 @@ html, body {
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
-        map.createPane('pane_Map_0');
-        map.getPane('pane_Map_0').style.zIndex = 400;
-        var layer_Map_0 = L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-            pane: 'pane_Map_0',
+        map.createPane('pane_GoogleHybrid_0');
+        map.getPane('pane_GoogleHybrid_0').style.zIndex = 400;
+        var layer_GoogleHybrid_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleHybrid_0',
             opacity: 1.0,
-            attribution: '',
+            attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
             minZoom: 1,
             maxZoom: 28,
             minNativeZoom: 0,
             maxNativeZoom: 20
         });
-        layer_Map_0;
-        map.addLayer(layer_Map_0);
+        layer_GoogleHybrid_0;
+        map.addLayer(layer_GoogleHybrid_0);
         function pop_DataStatus_1(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -148,15 +138,16 @@ html, body {
                         <td class="visible-with-data" id="Organization">' + (feature.properties['Organization'] !== null ? autolinker.link(String(feature.properties['Organization']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['Data Status'] !== null ? autolinker.link(String(feature.properties['Data Status']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <th scope="row">Data Status</th>\
+                        <td class="visible-with-data" id="Data Status">' + (feature.properties['Data Status'] !== null ? autolinker.link(String(feature.properties['Data Status']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">Country</th>\
                         <td class="visible-with-data" id="Country">' + (feature.properties['Country'] !== null ? autolinker.link(String(feature.properties['Country']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Monitored sites</th>\
-                        <td class="visible-with-data" id="Sites">' + (feature.properties['Sites'] !== null ? autolinker.link(String(feature.properties['Sites']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <th scope="row">Monitored site</th>\
+                        <td class="visible-with-data" id="Site">' + (feature.properties['Site'] !== null ? autolinker.link(String(feature.properties['Site']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -171,7 +162,7 @@ html, body {
                 case 'Data Obtained':
                     return {
                 pane: 'pane_DataStatus_1',
-                radius: 4.0,
+                radius: 6.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -187,7 +178,7 @@ html, body {
                 case 'Data Pending':
                     return {
                 pane: 'pane_DataStatus_1',
-                radius: 4.0,
+                radius: 6.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -196,14 +187,14 @@ html, body {
                 weight: 1,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(255,158,23,1.0)',
+                fillColor: 'rgba(255,127,0,1.0)',
                 interactive: true,
             }
                     break;
                 case 'Awaiting Response':
                     return {
                 pane: 'pane_DataStatus_1',
-                radius: 4.0,
+                radius: 6.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -212,14 +203,14 @@ html, body {
                 weight: 1,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(88,238,255,1.0)',
+                fillColor: 'rgba(68,230,255,1.0)',
                 interactive: true,
             }
                     break;
                 case 'Not Yet Contacted':
                     return {
                 pane: 'pane_DataStatus_1',
-                radius: 4.0,
+                radius: 6.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -228,7 +219,7 @@ html, body {
                 weight: 1,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(255,254,254,1.0)',
+                fillColor: 'rgba(255,255,255,1.0)',
                 interactive: true,
             }
                     break;
@@ -260,7 +251,7 @@ html, body {
         cluster_DataStatus_1.addTo(map);
         var overlaysTree = [
             {label: 'Data Status<br /><table><tr><td style="text-align: center;"><img src="legend/DataStatus_1_DataObtained0.png" /></td><td>Data Obtained</td></tr><tr><td style="text-align: center;"><img src="legend/DataStatus_1_DataPending1.png" /></td><td>Data Pending</td></tr><tr><td style="text-align: center;"><img src="legend/DataStatus_1_AwaitingResponse2.png" /></td><td>Awaiting Response</td></tr><tr><td style="text-align: center;"><img src="legend/DataStatus_1_NotYetContacted3.png" /></td><td>Not Yet Contacted</td></tr></table>', layer: cluster_DataStatus_1},
-            {label: "Map", layer: layer_Map_0},]
+            {label: "Google Hybrid", layer: layer_GoogleHybrid_0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
             //selectorBack: false,
