@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="css/leaflet.css">
@@ -13,21 +13,11 @@
         <link rel="stylesheet" href="css/MarkerCluster.css">
         <link rel="stylesheet" href="css/MarkerCluster.Default.css">
         <style>
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-}
-#map {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-</style>
+        #map {
+            width: 1020px;
+            height: 604px;
+        }
+        </style>
         <title>Solitary Nesting Olive Ridley Population Dynamics- Eastern Tropical Pacific</title>
     </head>
     <body>
@@ -53,7 +43,7 @@ html, body {
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[1.881323301148436,-97.36760630447607],[23.23677624581728,-60.13177863265919]]);
+        }).fitBounds([[4.71585526118171,-94.2778847476198],[16.976124150549925,-73.12494246530427]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -144,7 +134,7 @@ html, body {
             });
             var popupContent = '<table>\
                     <tr>\
-                        <th scope="row">Organization name</th>\
+                        <th scope="row">Organization</th>\
                         <td class="visible-with-data" id="Organization">' + (feature.properties['Organization'] !== null ? autolinker.link(String(feature.properties['Organization']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
@@ -156,7 +146,7 @@ html, body {
                         <td class="visible-with-data" id="Country">' + (feature.properties['Country'] !== null ? autolinker.link(String(feature.properties['Country']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Monitored site</th>\
+                        <th scope="row">Site</th>\
                         <td class="visible-with-data" id="Site">' + (feature.properties['Site'] !== null ? autolinker.link(String(feature.properties['Site']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
