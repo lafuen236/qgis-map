@@ -187,18 +187,4 @@
         }
         .leaflet-popup-pane {
             z-index: 700;
-        } html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-}
-
-#map {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
+        }
