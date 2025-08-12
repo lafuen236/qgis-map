@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="mobile-web-app-capable" content="yes">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="css/leaflet.css">
         <link rel="stylesheet" href="css/L.Control.Layers.Tree.css">
@@ -13,21 +13,11 @@
         <link rel="stylesheet" href="css/MarkerCluster.css">
         <link rel="stylesheet" href="css/MarkerCluster.Default.css">
         <style>
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-}
-#map {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-</style>
+        #map {
+            width: 1020px;
+            height: 604px;
+        }
+        </style>
         <title>Solitary Nesting Olive Ridley Population Dynamics- Eastern Tropical Pacific</title>
     </head>
     <body>
@@ -53,7 +43,7 @@ html, body {
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[1.2325723734197496,-101.53921589002856],[19.12091325083501,-70.67220762500735]]);
+        }).fitBounds([[12.926959515330424,-89.73596794045457],[14.036340174089334,-87.80677992389042]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
