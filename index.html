@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="css/leaflet.css">
@@ -13,21 +13,13 @@
         <link rel="stylesheet" href="css/MarkerCluster.css">
         <link rel="stylesheet" href="css/MarkerCluster.Default.css">
         <style>
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-}
-#map {
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-</style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
         <title>Solitary Nesting Olive Ridley Population Dynamics- Eastern Tropical Pacific</title>
     </head>
     <body>
@@ -53,7 +45,7 @@ html, body {
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[10.00208967125481,-93.96961505725896],[17.461468520382994,-80.45267706399133]]);
+        }).fitBounds([[10.383679942480542,-93.02303667968307],[17.192650733690925,-80.68333400220074]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -156,7 +148,7 @@ html, body {
                         <td class="visible-with-data" id="Country">' + (feature.properties['Country'] !== null ? autolinker.link(String(feature.properties['Country']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Monitored site</th>\
+                        <th scope="row">Moniored site</th>\
                         <td class="visible-with-data" id="Site">' + (feature.properties['Site'] !== null ? autolinker.link(String(feature.properties['Site']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
@@ -260,7 +252,7 @@ html, body {
         bounds_group.addLayer(layer_DataStatus_1);
         cluster_DataStatus_1.addTo(map);
         var overlaysTree = [
-            {label: 'Data Status<br /><table><tr><td style="text-align: center;"><img src="legend/DataStatus_1_DataObtained0.png" /></td><td>Data Obtained</td></tr><tr><td style="text-align: center;"><img src="legend/DataStatus_1_DataPending1.png" /></td><td>Data Pending</td></tr><tr><td style="text-align: center;"><img src="legend/DataStatus_1_AwaitingResponse2.png" /></td><td>Awaiting Response</td></tr><tr><td style="text-align: center;"><img src="legend/DataStatus_1_NotYetContacted3.png" /></td><td>Not Yet Contacted</td></tr></table>', layer: cluster_DataStatus_1},
+            {label: 'Data Status<br /><table><tr><td style="text-align: center;"><img src="legend/DataStatus_1_Dataobtained0.png" /></td><td>Data obtained</td></tr><tr><td style="text-align: center;"><img src="legend/DataStatus_1_Datapending1.png" /></td><td>Data pending</td></tr><tr><td style="text-align: center;"><img src="legend/DataStatus_1_Awaitingresponse2.png" /></td><td>Awaiting response</td></tr><tr><td style="text-align: center;"><img src="legend/DataStatus_1_Notyetcontacted3.png" /></td><td>Not yet contacted</td></tr></table>', layer: cluster_DataStatus_1},
             {label: "Google Hybrid", layer: layer_GoogleHybrid_0, radioGroup: 'bm' },]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
