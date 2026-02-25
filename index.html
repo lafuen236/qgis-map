@@ -36,7 +36,7 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet.markercluster.js"></script>
-        <script src="data/Datastatus_1.js"></script>
+        <script src="data/DataStatus_1.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -45,7 +45,7 @@
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[-6.032661887151281,-121.22119461300782],[24.506927132543353,-62.572775598814374]]);
+        }).fitBounds([[-6.03266188715128,-121.22119461300782],[24.506927132543353,-62.572775598814374]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -121,7 +121,7 @@
         });
         layer_GoogleHybrid_0;
         map.addLayer(layer_GoogleHybrid_0);
-        function pop_Datastatus_1(feature, layer) {
+        function pop_DataStatus_1(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -159,11 +159,11 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Datastatus_1_0(feature) {
+        function style_DataStatus_1_0(feature) {
             switch(String(feature.properties['Data Status'])) {
                 case 'Data Obtained':
                     return {
-                pane: 'pane_Datastatus_1',
+                pane: 'pane_DataStatus_1',
                 radius: 7.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -179,7 +179,7 @@
                     break;
                 case 'Data Pending':
                     return {
-                pane: 'pane_Datastatus_1',
+                pane: 'pane_DataStatus_1',
                 radius: 7.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -195,7 +195,7 @@
                     break;
                 case 'Awaiting Response':
                     return {
-                pane: 'pane_Datastatus_1',
+                pane: 'pane_DataStatus_1',
                 radius: 7.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -211,32 +211,32 @@
                     break;
             }
         }
-        map.createPane('pane_Datastatus_1');
-        map.getPane('pane_Datastatus_1').style.zIndex = 401;
-        map.getPane('pane_Datastatus_1').style['mix-blend-mode'] = 'normal';
-        var layer_Datastatus_1 = new L.geoJson(json_Datastatus_1, {
+        map.createPane('pane_DataStatus_1');
+        map.getPane('pane_DataStatus_1').style.zIndex = 401;
+        map.getPane('pane_DataStatus_1').style['mix-blend-mode'] = 'normal';
+        var layer_DataStatus_1 = new L.geoJson(json_DataStatus_1, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Datastatus_1',
-            layerName: 'layer_Datastatus_1',
-            pane: 'pane_Datastatus_1',
-            onEachFeature: pop_Datastatus_1,
+            dataVar: 'json_DataStatus_1',
+            layerName: 'layer_DataStatus_1',
+            pane: 'pane_DataStatus_1',
+            onEachFeature: pop_DataStatus_1,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_Datastatus_1_0(feature));
+                return L.circleMarker(latlng, style_DataStatus_1_0(feature));
             },
         });
-        var cluster_Datastatus_1 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+        var cluster_DataStatus_1 = new L.MarkerClusterGroup({showCoverageOnHover: false,
             spiderfyDistanceMultiplier: 2});
-        cluster_Datastatus_1.addLayer(layer_Datastatus_1);
+        cluster_DataStatus_1.addLayer(layer_DataStatus_1);
 
-        bounds_group.addLayer(layer_Datastatus_1);
-        cluster_Datastatus_1.addTo(map);
+        bounds_group.addLayer(layer_DataStatus_1);
+        cluster_DataStatus_1.addTo(map);
         var overlaysTree = [
-            {label: 'Data status<br /><table><tr><td style="text-align: center;"><img src="legend/Datastatus_1_Dataobtained0.png" /></td><td>Data obtained</td></tr><tr><td style="text-align: center;"><img src="legend/Datastatus_1_Datapending1.png" /></td><td>Data pending</td></tr><tr><td style="text-align: center;"><img src="legend/Datastatus_1_Awaitingresponse2.png" /></td><td>Awaiting response</td></tr></table>', layer: cluster_Datastatus_1},
+            {label: 'Data Status<br /><table><tr><td style="text-align: center;"><img src="legend/DataStatus_1_Dataobtained0.png" /></td><td>Data obtained</td></tr><tr><td style="text-align: center;"><img src="legend/DataStatus_1_Datapending1.png" /></td><td>Data pending</td></tr><tr><td style="text-align: center;"><img src="legend/DataStatus_1_Awaitingresponse2.png" /></td><td>Awaiting response</td></tr></table>', layer: cluster_DataStatus_1},
             {label: "Google Hybrid", layer: layer_GoogleHybrid_0, radioGroup: 'bm' },]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
